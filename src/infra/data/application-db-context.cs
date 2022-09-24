@@ -1,3 +1,4 @@
+using Flunt.Notifications;
 using iwantapp.domain.products;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,9 @@ public class ApplicationDbContext : DbContext {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options) {}
 
     protected override void OnModelCreating(ModelBuilder builder) {
+        // necessário para o Flunt.Notifications validar os DTO's
+        builder.Ignore<Notification>();
+
         builder.Entity<Product>().Property(p => p.name).IsRequired();
         builder.Entity<Product>().Property(p => p.description).HasMaxLength(255).IsRequired(false);
         

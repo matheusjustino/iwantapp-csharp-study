@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "RBYlZlXXAFFWg6s2UVEErKCeGa2SG/a9xZwxt56JSIhlZ0lWroWAgZ/yiBCK4wyCOLLiNvSOscF7LeaYyhsSXw==",
+  "dgSpecHash": "j3G3pBB46FRjJyQdEJtyzklvGnNcmlC5ZR2GIkMRJLqAFJDdphqMMQsJxsiTYHTjiq+PBjfyv6WDgukILMEnVw==",
   "success": true,
   "projectFilePath": "/home/matheus/Developer/projetos/dotnet-projects/iwantapp/iwantapp.csproj",
   "expectedPackageFiles": [
+    "/home/matheus/.nuget/packages/flunt/2.0.5/flunt.2.0.5.nupkg.sha512",
     "/home/matheus/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/matheus/.nuget/packages/microsoft.entityframeworkcore/6.0.9/microsoft.entityframeworkcore.6.0.9.nupkg.sha512",
     "/home/matheus/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.9/microsoft.entityframeworkcore.abstractions.6.0.9.nupkg.sha512",

@@ -4,6 +4,7 @@
 - dotnet add package Microsoft.EntityFrameworkCore
 - dotnet add package Microsoft.EntityFrameworkCore.Design
 - dotnet add package Pomelo.EntityFrameworkCore.MySql
+- dotnet add package Flunt --version 2.0.5
 
 ## TOOLS
 

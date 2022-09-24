@@ -1,4 +1,4 @@
 namespace iwantapp.endpoints.categories;
-public class CategoryRequest {
+public class CategoryPostRequest {
     public string name { get; set; }
 }

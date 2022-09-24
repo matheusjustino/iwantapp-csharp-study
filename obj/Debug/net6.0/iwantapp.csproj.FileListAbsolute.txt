@@ -33,3 +33,4 @@
 /home/matheus/Developer/projetos/dotnet-projects/iwantapp/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
 /home/matheus/Developer/projetos/dotnet-projects/iwantapp/bin/Debug/net6.0/MySqlConnector.dll
 /home/matheus/Developer/projetos/dotnet-projects/iwantapp/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/matheus/Developer/projetos/dotnet-projects/iwantapp/bin/Debug/net6.0/Flunt.dll
