@@ -5,7 +5,7 @@ namespace iwantapp.endpoints.categories;
 
 public class CategoryGetOne {
     // ao criar a propriedade template já atribui o valor "/categories"
-    public static string template => "/categories/{id}";
+    public static string template => "/categories/{id:guid}";
     public static string[] methods => new string[] { HttpMethod.Get.ToString() };
     public static Delegate handle => Action;
 

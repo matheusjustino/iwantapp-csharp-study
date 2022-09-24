@@ -15,15 +15,10 @@ public class CategoryPost {
         //     return Results.BadRequest("Name is required");
         // }
 
-        var category = new Category(request.name){
-            createdBy = "Test",
-            editedBy = "Test",
-            createdOn = DateTime.Now,
-            editedOn = DateTime.Now
-        };
+        var category = new Category(request.name, "Teste", "Teste");
 
         if (!category.IsValid) {
-            return Results.BadRequest(category.Notifications);
+            return Results.ValidationProblem(category.Notifications.convertToProblemDetails());
         }
 
         context.categories.Add(category);

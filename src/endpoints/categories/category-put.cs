@@ -5,7 +5,7 @@ namespace iwantapp.endpoints.categories;
 
 public class CategoryPut {
     // ao criar a propriedade template já atribui o valor "/categories"
-    public static string template => "/categories/{id}";
+    public static string template => "/categories/{id:guid}";
     public static string[] methods => new string[] { HttpMethod.Put.ToString() };
     public static Delegate handle => Action;
 
@@ -19,11 +19,10 @@ public class CategoryPut {
         /* seta as propriedades de dbCategory com o que está vindo de request. os tipos precisam ser os mesmo */
         // context.Entry(dbCategory).CurrentValues.SetValues(request);
 
-        if (request.name != null) {
-            dbCategory.name = request.name;
-        }
-        if (request.active != null) {
-            dbCategory.active = (bool) request.active;
+        dbCategory.editInfo(request.name, request.active);
+
+        if (!dbCategory.IsValid) {
+            return Results.ValidationProblem(dbCategory.Notifications.convertToProblemDetails());
         }
 
         context.SaveChanges();
