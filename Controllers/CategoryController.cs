@@ -5,7 +5,7 @@ using IWantApp.Models.Products;
 using IWantApp.Services;
 using IWantApp.ViewModel;
 
-[Route("api/categories")]
+[Route("/api/categories")]
 [ApiController]
 public class CategoryController : ControllerBase
 {
@@ -21,16 +21,47 @@ public class CategoryController : ControllerBase
     {
         Console.WriteLine("model valid: " + this.ModelState.IsValid);
         if (!this.ModelState.IsValid)
-            return BadRequest();
-
-        var categoryId = await this._categoryService.CreateCategory(categoryRequest);
-        // if (categoryId is null)
-        if (string.IsNullOrEmpty(categoryId))
         {
-            return BadRequest("Couldn't create category");
+            return BadRequest(new
+            {
+                message = "Invalid body",
+            });
         }
 
-        return Ok(categoryId);
+        try
+        {
+            var categoryId = await this._categoryService.CreateCategory(categoryRequest);
+            return Ok(new
+            {
+                categoryId,
+            });
+        }
+        catch (System.Exception e)
+        {
+            Console.WriteLine(e);
+            return BadRequest(new
+            {
+                message = "Couldn't create category",
+            });
+        }
+    }
+
+    [HttpGet]
+    [Route("{id}")]
+    public ActionResult<List<Category>> GetCategoryById([FromRoute] Guid id)
+    {
+        Console.WriteLine($"category id: {id}");
+
+        var category = this._categoryService.GetCategoryById(id);
+        if (category is null)
+        {
+            return NotFound(new
+            {
+                message = "Category not found",
+            });
+        }
+
+        return Ok(category);
     }
 
     [HttpGet]

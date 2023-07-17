@@ -39,4 +39,9 @@ public class CategoryService : ICategoryService
     {
         return this._context.Categories.ToList();
     }
+
+    public Category? GetCategoryById(Guid id)
+    {
+        return this._context.Categories.Where(c => c.Id == id).FirstOrDefault();
+    }
 }
