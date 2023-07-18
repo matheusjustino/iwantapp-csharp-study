@@ -1,3 +1,7 @@
+## DOCKER
+
+- docker-compose up
+
 ## DATABASE
 
 - migrations:
