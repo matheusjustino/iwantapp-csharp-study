@@ -1,3 +1,5 @@
+using IWantApp.Middleware;
+
 namespace IWantApp.Startup;
 
 public static partial class MiddlewareInitializer
@@ -9,6 +11,7 @@ public static partial class MiddlewareInitializer
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseAuthorization();
+        app.ConfigureExceptionHandler(app.Logger);
 
         return app;
     }

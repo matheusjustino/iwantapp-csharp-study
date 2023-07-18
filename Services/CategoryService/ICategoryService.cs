@@ -2,6 +2,7 @@
 
 using IWantApp.Models.Products;
 using IWantApp.ViewModel;
+using IWantApp.ViewModel.Category;
 
 public interface ICategoryService
 {
@@ -10,4 +11,8 @@ public interface ICategoryService
     List<Category> ListCategories();
 
     Category GetCategoryById(Guid id);
+
+    Task<string> UpdateCategory(Guid categoryId, UpdateCategoryViewModel data);
+
+    Task<string> DeleteCategory(Guid categoryId);
 }

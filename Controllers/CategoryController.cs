@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using IWantApp.Models.Products;
 using IWantApp.Services;
 using IWantApp.ViewModel;
+using IWantApp.ViewModel.Category;
 
 [Route("/api/categories")]
 [ApiController]
@@ -50,17 +51,7 @@ public class CategoryController : ControllerBase
     [Route("{id}")]
     public ActionResult<List<Category>> GetCategoryById([FromRoute] Guid id)
     {
-        Console.WriteLine($"category id: {id}");
-
-        var category = this._categoryService.GetCategoryById(id);
-        if (category is null)
-        {
-            return NotFound(new
-            {
-                message = "Category not found",
-            });
-        }
-
+        var category = this._categoryService.GetCategoryById(id) ?? throw new BadHttpRequestException("Category not found");
         return Ok(category);
     }
 
@@ -68,5 +59,21 @@ public class CategoryController : ControllerBase
     public ActionResult<List<Category>> ListCategories()
     {
         return Ok(this._categoryService.ListCategories());
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult<string>> UpdateCategory([FromRoute] Guid id, [FromBody] UpdateCategoryViewModel body)
+    {
+        if (!ModelState.IsValid) throw new BadHttpRequestException("Invalid body");
+
+        var categoryId = await this._categoryService.UpdateCategory(id, body);
+
+        return Ok(categoryId);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<string>> DeleteCategory([FromRoute] Guid id)
+    {
+        return await this._categoryService.DeleteCategory(id);
     }
 }
