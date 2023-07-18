@@ -20,7 +20,6 @@ public class CategoryController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<string>> CreateCategory([FromBody] CreateCategoryViewModel categoryRequest)
     {
-        Console.WriteLine("model valid: " + this.ModelState.IsValid);
         if (!this.ModelState.IsValid)
         {
             return BadRequest(new
